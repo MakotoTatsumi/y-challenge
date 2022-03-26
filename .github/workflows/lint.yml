@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  admin:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Set environment variables
         run: |
-          awk -F "=" '{if( $1 ~ "NODE_VERSION" ) print $0}' ./../.env >> $GITHUB_ENV
+          awk -F "=" '{if( $1 ~ "NODE_VERSION" ) print $0}' ./.node-version >> $GITHUB_ENV
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
