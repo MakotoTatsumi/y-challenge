@@ -5,16 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "check-all": "npm-run-all -s fix type-check",
     "fix": "run-p fix:*",
     "fix-ts-by-eslint": "eslint \"./**/*.{ts,tsx}\" --fix",
     "fix-ts-by-prettier": "prettier \"./**/*.{ts,tsx}\" --write",
     "fix:json": "prettier \"./*.json\" \"./**/*.json\" --write",
+    "fix:pack": "fixpack",
     "fix:ts": "run-s fix-ts-by-eslint fix-ts-by-prettier",
     "lint": "run-p lint:*",
     "lint-ts-by-eslint": "eslint \"./**/*.{ts,tsx}\"",
     "lint-ts-by-prettier": "prettier \"./**/*.{ts,tsx}\"",
     "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
     "start": "next start",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "next": "12.1.0",
@@ -30,6 +33,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
+    "fixpack": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.1",
     "typescript": "4.6.3"
