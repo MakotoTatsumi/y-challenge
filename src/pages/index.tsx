@@ -1,12 +1,10 @@
 import type { NextPage } from "next"
+import { Home } from "@components/template/Home"
 
-const Home: NextPage = (props) => {
-  return (
-    <div>
-      hogehoge
-      <div>pretteir</div>
-    </div>
-  )
-}
+const HomePage: NextPage = (props) => (
+  <div>
+    <Home />
+  </div>
+)
 
-export default Home
+export default HomePage
