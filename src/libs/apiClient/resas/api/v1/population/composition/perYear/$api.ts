@@ -9,15 +9,13 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   return {
     /**
      * 地域単位、年単位の年齢構成のデータを返します。
-     * @param option.body - https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html
-     * @returns OK
+     * @returns Example response
      */
     get: (option: { body: Methods0['get']['reqBody'], config?: T | undefined }) =>
       fetch<Methods0['get']['resBody'], BasicHeaders, Methods0['get']['status']>(prefix, PATH0, GET, option).json(),
     /**
      * 地域単位、年単位の年齢構成のデータを返します。
-     * @param option.body - https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html
-     * @returns OK
+     * @returns Example response
      */
     $get: (option: { body: Methods0['get']['reqBody'], config?: T | undefined }) =>
       fetch<Methods0['get']['resBody'], BasicHeaders, Methods0['get']['status']>(prefix, PATH0, GET, option).json().then(r => r.body),
