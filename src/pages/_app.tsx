@@ -1,5 +1,6 @@
-import type { AppProps } from "next/app"
 import { Reset } from "styled-reset"
+
+import type { AppProps } from "next/app"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

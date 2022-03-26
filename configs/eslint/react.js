@@ -1,3 +1,5 @@
+const { OFF, ERROR } = require("./const")
+
 module.exports = {
   plugins: ["react", "react-hooks"],
   extends: ["plugin:react/recommended"],
@@ -14,6 +16,6 @@ module.exports = {
   rules: {
     "react/jsx-props-no-spreading": OFF,
     "react/prop-types": OFF,
-    "react/jsx-fragments": [ERROR, "element"],
+    "react/react-in-jsx-scope": OFF,
   },
 }

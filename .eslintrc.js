@@ -12,13 +12,11 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "next",
-    "airbnb",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "./configs/eslint/import",
     "./configs/eslint/react",
     "prettier",
   ],
-  ignorePatterns: ["./.next"],
   ignorePatterns: [".next", "**/libs/**"],
 }
