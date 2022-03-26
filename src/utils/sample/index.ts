@@ -1,1 +1,1 @@
-export const sample = () => console.log("hoge")
+export const sample = () => console.log("sample")
