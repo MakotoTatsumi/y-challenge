@@ -20,4 +20,5 @@ module.exports = {
     "prettier",
   ],
   ignorePatterns: ["./.next"],
+  ignorePatterns: [".next", "**/libs/**"],
 }
