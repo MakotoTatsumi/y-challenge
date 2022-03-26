@@ -1,8 +1,13 @@
-openapi: 3.1.0
+openapi: 3.0.2
 info:
   title: prefectures
   version: '1.0'
-  summary: 都道府県一覧
+  description: ''
+  contact:
+    name: Resas
+    url: 'https://opendata.resas-portal.go.jp/'
+  termsOfService: 'https://opendata.resas-portal.go.jp/'
+  license: {}
 servers:
   - url: 'https://opendata.resas-portal.go.jp'
 paths:
@@ -133,8 +138,7 @@ paths:
                         prefName: 沖縄県
       operationId: get-api-v1-prefectures
       description: 都道府県情報を取得
-      security:
-        - API Key - 1: []
+      security: []
       parameters: []
   /api/v1/population/composition/perYear:
     get:
@@ -189,8 +193,7 @@ paths:
       operationId: get-api-v1-population-composition-perYear
       description: |
         地域単位、年単位の年齢構成のデータを返します。
-      security:
-        - API Key - 1: []
+      security: []
       requestBody:
         content:
           application/json:
@@ -219,8 +222,4 @@ paths:
         description: 'https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html'
 components:
   schemas: {}
-  securitySchemes:
-    API Key - 1:
-      name: API Key
-      type: apiKey
-      in: query
+  securitySchemes: {}
