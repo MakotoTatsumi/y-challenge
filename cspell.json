@@ -1,0 +1,17 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "dictionaries": [
+    "library",
+    "typescript",
+    "html",
+    "css"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "library",
+      "path": "./configs/cspell/library.txt"
+    }
+  ],
+  "ignorePaths": ["node_modules/**"]
+}
