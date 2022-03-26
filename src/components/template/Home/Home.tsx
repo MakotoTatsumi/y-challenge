@@ -7,14 +7,14 @@ export function Home() {
 
   return (
     <Root>
-      <Inner>Hoge</Inner>
+      <Inner>Sample Component</Inner>
     </Root>
   )
 }
 
 const Root = styled.div`
   padding: 20px;
-  margin: 100px;
+  margin: 10px;
   border: 1px solid black;
 `
 
