@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "check-all": "npm-run-all -s fix type-check",
+    "dev": "next dev",
     "fix": "run-p fix:*",
     "fix-ts-by-eslint": "eslint \"./**/*.{ts,tsx}\" --fix",
     "fix-ts-by-prettier": "prettier \"./**/*.{ts,tsx}\" --write",
