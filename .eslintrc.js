@@ -16,6 +16,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "./configs/eslint/import",
+    "./configs/eslint/react",
     "prettier",
   ],
   ignorePatterns: ["./.next"],
