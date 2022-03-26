@@ -20,9 +20,14 @@
     "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
     "start": "next start",
     "spell-check": "cspell \"./src/**/*.{ts,tsx}\"",
+    "test": "jest",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@swc/core": "^1.2.160",
+    "@swc/jest": "^0.2.20",
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
