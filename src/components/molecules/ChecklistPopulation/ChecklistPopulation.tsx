@@ -1,7 +1,8 @@
 import { VFC } from "react"
-import { Checkbox } from "@components/atoms/Checkbox"
 import styled from "styled-components"
+
 import { Prefectures } from "@/libs/apiClient/resas/@types"
+import { Checkbox } from "@components/atoms/Checkbox"
 
 type ChecklistType = {
   listData: Prefectures
@@ -13,7 +14,7 @@ export const ChecklistPopulation: VFC<ChecklistType> = (props) => {
 
   return (
     <Root>
-      {listData.map(({ prefName, prefCode }, index) => (
+      {listData.map(({ prefName, prefCode }) => (
         <CheckboxWrapper key={prefCode}>
           <Checkbox>{prefName}</Checkbox>
         </CheckboxWrapper>
