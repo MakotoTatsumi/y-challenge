@@ -1,5 +1,8 @@
 import axiosClient from "@aspida/axios"
+import axios from "axios"
 
 import api from "@/libs/apiClient/resas/$api"
 
-export const apiClient = api(axiosClient())
+axios.defaults.headers.common["X-API-KEY"] = process.env.API_KEY || ""
+
+export const apiClient = api(axiosClient(axios))
