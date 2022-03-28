@@ -3,9 +3,13 @@
  */
 const config = {
   testEnvironment: "jsdom",
-
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "^@shared/(.*)$": "<rootDir>/src/shared/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+  },
   testMatch: ["**/*.test.js", "**/*.test.ts", "**/*.test.tsx"],
-  setupFilesAfterEnv: ["<rootDir>/config/test/setup.ts"],
+  setupFilesAfterEnv: ["<rootDir>/configs/test/setup.ts"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
   transformIgnorePatterns: ["/node_modules/"],
 
@@ -14,9 +18,6 @@ const config = {
       "@swc/jest",
       {
         sourceMaps: true,
-        module: {
-          type: "commonjs",
-        },
         jsc: {
           parser: {
             syntax: "typescript",
