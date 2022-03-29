@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Node
+```bash
+16.14.2
+```
 
-## Getting Started
-
-First, run the development server:
+## 環境構築
 
 ```bash
-npm run dev
-# or
+yarn install
+
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Linter
+eslint, stylelint, 型チェック spellチェック, jestのテストが走ります 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn check-all
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## storybook
+```bash
+yarn storybook
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-## Learn More
+## 実装したこと(環境構築)
+- Linter系の導入
+- githubActionsでlintの管理
+- Jestでの単体テスト
+- OpenAPIによる型定義管理
+- OpenAPI2Aspidaによる、APIの型管理
+- Storybook導入
+- Storybook,play関数の初期動作まで
 
-To learn more about Next.js, take a look at the following resources:
+## 実装したこと(実装)
+- 画面全体の実装
+- APIのキャッシュ処理
+- API系のエラー処理
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 実装できてないこと
+- Componentのテスト
+- E2Eテスト
+- Chartの各都道府県の色を変更する
+- 各色の線がなにを示すかを表示する処理
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
