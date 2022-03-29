@@ -5,11 +5,11 @@ import styled from "styled-components"
 import { ChartsType } from "@components/atoms/Charts/Charts.type"
 
 export const Charts: VFC<ChartsType> = (props) => {
-  const { data } = props
+  const { data, checked } = props
 
   return (
     <Root>
-      <ResponsiveContainer>
+      <ResponsiveContainer width={"90%"} height={400}>
         <LineChart
           width={500}
           height={300}
@@ -26,8 +26,11 @@ export const Charts: VFC<ChartsType> = (props) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          {checked.map((list) => {
+            return (
+              <Line key={list.prefCode} type="monotone" dataKey={list.prefName} stroke="#8884d8" activeDot={{ r: 8 }} />
+            )
+          })}
         </LineChart>
       </ResponsiveContainer>
     </Root>
@@ -35,7 +38,6 @@ export const Charts: VFC<ChartsType> = (props) => {
 }
 
 const Root = styled.div`
-  height: 500px;
-  width: 800px;
-  margin: 50px auto;
+  width: 100%;
+  margin: 50px 0;
 `

@@ -6,17 +6,17 @@ import { Checkbox } from "@components/atoms/Checkbox"
 
 type ChecklistType = {
   listData: Prefectures
+  handleClickCheckbox: (list: { prefName: string; prefCode: string }) => Promise<void>
 }
 
 export const ChecklistPopulation: VFC<ChecklistType> = (props) => {
-  const { listData } = props
-  console.log(listData)
+  const { listData, handleClickCheckbox } = props
 
   return (
     <Root>
-      {listData.map(({ prefName, prefCode }) => (
-        <CheckboxWrapper key={prefCode}>
-          <Checkbox>{prefName}</Checkbox>
+      {listData.map((list) => (
+        <CheckboxWrapper key={list.prefCode}>
+          <Checkbox onClick={() => handleClickCheckbox(list)}>{list.prefName}</Checkbox>
         </CheckboxWrapper>
       ))}
     </Root>

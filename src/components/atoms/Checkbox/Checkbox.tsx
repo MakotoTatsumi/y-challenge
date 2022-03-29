@@ -1,10 +1,10 @@
-import { ComponentProps, FC } from "react"
+import { ComponentPropsWithoutRef, FC } from "react"
 import styled from "styled-components"
 
-export const Checkbox: FC<ComponentProps<"input">> = ({ children }) => {
+export const Checkbox: FC<Omit<ComponentPropsWithoutRef<"input">, "type">> = ({ children, ...props }) => {
   return (
     <StyledLabel>
-      <StyledInput />
+      <StyledInput {...props} />
       {children}
     </StyledLabel>
   )
