@@ -27,6 +27,7 @@ yarn storybook
 
 ## 実装したこと(環境構築)
 - Linter系の導入
+- githubActionsでlintの管理
 - Jestでの単体テスト
 - OpenAPIによる型定義管理
 - OpenAPI2Aspidaによる、APIの型管理

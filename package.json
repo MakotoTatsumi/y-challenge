@@ -6,7 +6,7 @@
     "aspida-gen": "run-s clean:resas aspida-gen:*",
     "aspida-gen:resas": "openapi2aspida -c \"./configs/aspida/resas.js\"",
     "build": "next build",
-    "check-all": "npm-run-all -s lint -p type-check spell-check",
+    "check-all": "npm-run-all -s lint -p type-check spell-check test",
     "clean:resas": "rimraf ./src/libs/apiClient/resas",
     "dev": "next dev",
     "fix": "run-p fix:*",
