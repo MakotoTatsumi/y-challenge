@@ -33,12 +33,21 @@ paths:
       description: |
         地域単位、年単位の年齢構成のデータを返します。
       security: []
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/populationQuery'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: prefCode
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: cityCode
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: addArea
 components:
   schemas:
     prefectures:
@@ -54,9 +63,21 @@ components:
         required:
           - prefCode
           - prefName
+      x-examples:
+        example-1:
+          - prefCode: string
+            prefName: string
     population:
       title: populationResult
       type: object
+      x-examples:
+        example-1:
+          boundaryYear: 0
+          data:
+            - label: string
+              data:
+                - year: string
+                  value: string
       properties:
         boundaryYear:
           type: number
@@ -65,29 +86,26 @@ components:
           items:
             type: object
             properties:
-              year:
-                type: number
-              value:
-                type: number
+              label:
+                type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    year:
+                      type: number
+                    value:
+                      type: number
+                  required:
+                    - year
+                    - value
             required:
-              - year
-              - value
+              - label
+              - data
       required:
         - boundaryYear
         - data
-    populationQuery:
-      title: populationQuery
-      type: object
-      properties:
-        prefCode:
-          type: number
-        cityCode:
-          type: string
-        addArea:
-          type: string
-      required:
-        - prefCode
-        - cityCode
   securitySchemes: {}
   responses:
     prefectures:
@@ -119,9 +137,8 @@ components:
                 type: string
                 nullable: true
               result:
-                type: array
-                items:
-                  $ref: '#/components/schemas/population'
+                $ref: '#/components/schemas/population'
             required:
               - message
+              - result
   parameters: {}

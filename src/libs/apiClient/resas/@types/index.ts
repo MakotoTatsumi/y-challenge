@@ -7,13 +7,10 @@ export type Prefectures = {
 export type Population = {
   boundaryYear: number
   data: {
-    year: number
-    value: number
+    label: string
+    data: {
+      year: number
+      value: number
+    }[]
   }[]
-}
-
-export type PopulationQuery = {
-  prefCode: number
-  cityCode: string
-  addArea?: string | undefined
 }
