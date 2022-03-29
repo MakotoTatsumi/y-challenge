@@ -1,26 +1,26 @@
-import { AxiosError, AxiosResponse } from "axios"
+import { AspidaResponse } from "aspida"
+import { AxiosError } from "axios"
 
 import { callApiInternal } from "@/api/modules/callApi/modules/callApiInternal/index"
 import { AnyObject } from "@/shared/types/utils"
 
-const successData = { data: [{ label: "北海道", id: "1" }], status: 200 } as const
-const mockApiSuccess = (res: AxiosResponse) => () => Promise.resolve(res)
+const successData = { data: [{ label: "北海道", id: "1" }] } as const
+const mockApiSuccess = (res: AspidaResponse<unknown>) => () => Promise.resolve(res)
 const mockApiError = (res: AxiosError | Error) => () => Promise.reject(res)
 
 describe("callApiInternal", () => {
   describe("2XX response", () => {
     it("response success", async () => {
       const result = { status: "success", data: successData }
-      const sampleAxiosRes: AxiosResponse<typeof successData> = {
-        data: successData,
+      const sampleAspidaRes: AspidaResponse<typeof successData> = {
+        body: successData,
         status: 200,
-        statusText: "",
+        originalResponse: {},
         headers: {},
-        config: {},
       }
 
       expect.assertions(1)
-      const response = await callApiInternal(mockApiSuccess(sampleAxiosRes))
+      const response = await callApiInternal(mockApiSuccess(sampleAspidaRes))
       expect(response).toEqual(result)
     })
 
@@ -35,16 +35,15 @@ describe("callApiInternal", () => {
           },
         },
       }
-      const axiosRes: AxiosResponse<AnyObject> = {
-        data: {},
+      const AspidaRes: AspidaResponse<AnyObject> = {
+        body: {},
         status: 201,
-        statusText: "",
+        originalResponse: {},
         headers: {},
-        config: {},
       }
 
       expect.assertions(1)
-      const response = await callApiInternal(mockApiSuccess(axiosRes))
+      const response = await callApiInternal(mockApiSuccess(AspidaRes))
       expect(response).toEqual(result)
     })
   })
