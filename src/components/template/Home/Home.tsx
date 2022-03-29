@@ -2,10 +2,13 @@ import { VFC } from "react"
 import styled from "styled-components"
 
 import { StaticProps } from "@/pages/modules/getStaticProps"
+import { Charts } from "@components/atoms/Charts"
 import { ChecklistPopulation } from "@components/molecules/ChecklistPopulation"
+import { useChartData } from "@components/template/Home/hooks/useChartData"
 
 export const Home: VFC<StaticProps> = (props) => {
   const { prefectureData } = props
+  const { handleClickCheckbox, chartData, checked } = useChartData()
 
   return (
     <Root>
@@ -14,8 +17,9 @@ export const Home: VFC<StaticProps> = (props) => {
       </Header>
       <CheckListArea>
         <CheckListTitle>都道府県</CheckListTitle>
-        <ChecklistPopulation listData={prefectureData} />
+        <ChecklistPopulation listData={prefectureData} handleClickCheckbox={handleClickCheckbox} />
       </CheckListArea>
+      <Charts data={chartData} checked={checked} />
     </Root>
   )
 }

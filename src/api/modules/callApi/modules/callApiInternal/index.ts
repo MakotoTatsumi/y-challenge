@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from "axios"
+import { AspidaResponse } from "aspida"
+import axios from "axios"
 
 import { NETWORK_ERROR, SOMETHING_ERROR } from "@/api/modules/callApi/const/apiError"
 import { ApiError, ApiErrorType, ApiResult } from "@/api/modules/callApi/types"
@@ -23,13 +24,13 @@ const asApiError = (error: ApiErrorType): ApiError => {
  * fetch処理のerrorHandling
  * @param fn
  */
-export const callApiInternal = async <T>(fn: () => Promise<AxiosResponse>): Promise<ApiResult<T>> => {
+export const callApiInternal = async <T>(fn: () => Promise<AspidaResponse<T>>): Promise<ApiResult<T>> => {
   try {
     const response = await fn()
 
-    if (response.status / 100 === 2) return { status: "success", data: response.data as T }
+    if (response.status / 100 === 2) return { status: "success", data: response.body }
 
-    return { status: "error", data: asApiError(response) }
+    return { status: "error", data: asApiError({ status: response.status, data: SOMETHING_ERROR }) }
   } catch (error) {
     // axios error
     if (axios.isAxiosError(error) && error.response)
