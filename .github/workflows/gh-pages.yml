@@ -15,6 +15,7 @@ jobs:
         run: |
           awk -F "=" '{if( $1 ~ "NODE_VERSION" ) print $0}' ./.node-version >> $GITHUB_ENV
           echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+          echo "URL_PREFIX=${{ secrets.URL_PREFIX }}" >> $GITHUB_ENV
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -32,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
         env:
-          URL_PREFIX: y-challenge
+          URL_PREFIX: ${{ env.URL_PREFIX }}
           API_KEY: ${{ env.API_KEY }}
 
       - name: build
