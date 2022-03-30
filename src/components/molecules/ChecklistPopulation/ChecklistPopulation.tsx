@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 import { Prefectures } from "@/libs/apiClient/resas/@types"
 import { Checkbox } from "@components/atoms/Checkbox"
+import { AnyFunction } from "@shared/types/utils"
 
 type ChecklistType = {
   listData: Prefectures
-  handleClickCheckbox: (list: { prefName: string; prefCode: string }) => Promise<void>
+  handleClickCheckbox: AnyFunction
 }
 
 export const ChecklistPopulation: VFC<ChecklistType> = (props) => {
