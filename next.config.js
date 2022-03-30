@@ -6,7 +6,6 @@ const nextConfig = {
   pageExtensions: ["page.tsx", "page.ts", "api.ts"],
   env: {
     API_KEY: process.env.API_KEY,
-    URL_PREFIX: process.env.URL_PREFIX,
   },
   assetPrefix: urlPrefix,
   trailingSlash: true,
