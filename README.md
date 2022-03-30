@@ -1,9 +1,20 @@
+## Deploy先
+https://makototatsumi.github.io/y-challenge/
+
 ## Node
 ```bash
 16.14.2
 ```
 
-## 環境構築
+## ローカルで確認
+.envにRESASから取得したAPI-KEYをセット
+
+[RESAS](https://opendata.resas-portal.go.jp/form.html)
+
+```bash
+API_KEY=XXXX
+```
+
 
 ```bash
 yarn install
