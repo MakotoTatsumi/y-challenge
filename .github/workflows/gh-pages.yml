@@ -1,0 +1,55 @@
+name: github pages
+
+# masterブランチにプッシュしたときjobsに記述した操作を行う
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Set environment variables
+        run: |
+          awk -F "=" '{if( $1 ~ "NODE_VERSION" ) print $0}' ./.node-version >> $GITHUB_ENV
+
+          - name: Set up Node.js
+            uses: actions/setup-node@v2
+            with:
+              node-version: ${{ env.NODE_VERSION }}
+
+          - name: Restore yarn cache
+            uses: actions/cache@v2
+            with:
+              path: admin/node_modules
+              key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+              restore-keys: |
+                ${{ runner.os }}-yarn-
+
+          - name: Install dependencies
+            run: yarn install
+
+      - name: build
+        run: yarn build
+
+      - name: export
+        run: yarn export
+
+      # GitHub Pagesの仕様として_から始まるディレクトリが読めない
+      # これを回避するために.nojekyllファイルをoutディレクトリに作る
+      - name: add nojekyll
+        run: touch ./out/.nojekyll
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
