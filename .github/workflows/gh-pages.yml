@@ -21,21 +21,21 @@ jobs:
         run: |
           awk -F "=" '{if( $1 ~ "NODE_VERSION" ) print $0}' ./.node-version >> $GITHUB_ENV
 
-          - name: Set up Node.js
-            uses: actions/setup-node@v2
-            with:
-              node-version: ${{ env.NODE_VERSION }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-          - name: Restore yarn cache
-            uses: actions/cache@v2
-            with:
-              path: admin/node_modules
-              key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-              restore-keys: |
-                ${{ runner.os }}-yarn-
+      - name: Restore yarn cache
+        uses: actions/cache@v2
+        with:
+          path: admin/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-          - name: Install dependencies
-            run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
       - name: build
         run: yarn build
