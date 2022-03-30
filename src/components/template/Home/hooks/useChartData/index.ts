@@ -4,6 +4,7 @@ import { getPopulation } from "@/api/resas/getPopulation"
 import { ChartDataType, YearListType } from "@components/template/Home/Home.type"
 import { convertToCachedData } from "@components/template/Home/hooks/useChartData/modules/convertToCachedData"
 import { createChartData } from "@components/template/Home/hooks/useChartData/modules/createChartData"
+import { generateRandomColorCode } from "@components/template/Home/hooks/useChartData/modules/generateRandomColorCode"
 import { getTotalPopulationData } from "@components/template/Home/hooks/useChartData/modules/getTotalPopulationData"
 import { CheckedDataType, PopulationDataCache } from "@components/template/Home/hooks/useChartData/types"
 
@@ -29,7 +30,7 @@ export const useChartData = () => {
     setChecked((prevState) => {
       return prevState.find((list) => list.prefCode === prefCode)
         ? prevState.filter((list) => list.prefCode !== prefCode)
-        : [...prevState, listData]
+        : [...prevState, { ...listData, colorCode: generateRandomColorCode() }]
     })
 
     // 同じデータの場合は、取得しないようにキャッシュ処理

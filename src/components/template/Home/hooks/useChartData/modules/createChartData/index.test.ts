@@ -4,10 +4,12 @@ const checkList = [
   {
     prefCode: "1",
     prefName: "北海道",
+    colorCode: "#FFFFFF",
   },
   {
     prefCode: "2",
     prefName: "青森県",
+    colorCode: "#EEEEEE",
   },
 ]
 
