@@ -1,8 +1,7 @@
 name: github pages
 
-# masterブランチにプッシュしたときjobsに記述した操作を行う
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -12,14 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
       - name: Set environment variables
         run: |
           awk -F "=" '{if( $1 ~ "NODE_VERSION" ) print $0}' ./.node-version >> $GITHUB_ENV
+          echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -36,11 +31,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+        env:
+          URL_PREFIX: y-challenge
+          API_KEY: ${{ env.API_KEY }}
 
       - name: build
         run: yarn build
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
 
       - name: export
         run: yarn export
