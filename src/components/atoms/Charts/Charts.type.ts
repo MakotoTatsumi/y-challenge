@@ -1,6 +1,8 @@
+import { CheckedDataType } from "@components/template/Home/hooks/useChartData/types"
+
 export type ChartsType = {
   data: ChartsDataType[]
-  checked: { prefCode: string; prefName: string }[]
+  checked: CheckedDataType[]
 }
 
 type ChartsDataType = {
