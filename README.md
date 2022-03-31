@@ -1,9 +1,15 @@
-## Deploy先
+## Deploy
+gh-pages:
 https://makototatsumi.github.io/y-challenge/
 
+vercel:
+https://y-challenge.vercel.app/
+
 ## Node
+vercelにdeployするため、versionを14系にしている
+
 ```bash
-16.14.2
+14.18.1
 ```
 
 ## ローカルで確認
